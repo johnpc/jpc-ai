@@ -1,0 +1,61 @@
+{
+  "name": "jpc-gen-ai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "sandbox": "ampx sandbox --profile personal --once",
+    "prod-config": "ampx generate outputs --app-id d1obskizdabnoi --branch main --profile personal",
+    "ios": "npm run prod-config && npm run dev-ios",
+    "dev-ios": "npm run build && cap sync && cap copy ios && cap open ios"
+  },
+  "dependencies": {
+    "@aws-amplify/ui-react": "^6.5.4",
+    "@aws-amplify/ui-react-ai": "ai-streaming",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/camera": "^6.0.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.4",
+    "aws-amplify": "^6.6.5",
+    "date-fns": "^4.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "rehype-highlight": "^7.0.0",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.5.0",
+    "@aws-amplify/backend-cli": "^1.2.9",
+    "@aws-sdk/client-bedrock-runtime": "^3.670.0",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.1.2",
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "aws-cdk": "^2.156.0",
+    "aws-cdk-lib": "^2.156.0",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1"
+  },
+  "overrides": {
+    "@aws-amplify/graphql-api-construct": "1.15.1-ai-streaming.4",
+    "@aws-amplify/data-construct": "1.11.0",
+    "@aws-amplify/data-schema": "1.10.0"
+  }
+}
