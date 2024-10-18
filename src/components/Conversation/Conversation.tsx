@@ -45,7 +45,7 @@ export default function Conversation(props: {
         overflow={"scroll"}
       >
         <AIConversation
-          allowAttachments
+          // allowAttachments
           variant="bubble"
           isLoading={isLoading}
           messages={messages}
