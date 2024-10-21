@@ -9,14 +9,13 @@ import remarkGfm from "remark-gfm";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const client = generateClient<Schema>({ authMode: "userPool" });
-const { useAIConversationStreaming } = createAIHooks(client);
+const { useAIConversation } = createAIHooks(client);
 
 export default function Conversation(props: {
   conversationId?: string;
   user: AuthUser;
   leaveConversation: () => void;
 }) {
-  console.log("rendering page");
   const [
     {
       data: { messages },
@@ -24,7 +23,7 @@ export default function Conversation(props: {
       isLoading,
     },
     sendMessage,
-  ] = useAIConversationStreaming("chat", {
+  ] = useAIConversation("chat", {
     id: props.conversationId,
   });
 
@@ -45,7 +44,7 @@ export default function Conversation(props: {
         overflow={"scroll"}
       >
         <AIConversation
-          // allowAttachments
+          allowAttachments
           variant="bubble"
           isLoading={isLoading}
           messages={messages}

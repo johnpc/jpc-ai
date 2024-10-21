@@ -31,7 +31,7 @@ export default function Page() {
                 fontSize={tokens.fontSizes.xl}
                 color={tokens.colors.primary[90]}
               >
-                jpc.finance
+                jpc.ai
               </Heading>
             </View>
           );

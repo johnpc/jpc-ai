@@ -14,7 +14,7 @@
     "dev-ios": "npm run build && cap sync && cap copy ios && cap open ios"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^6.5.4",
+    "@aws-amplify/ui-react": "ai-streaming",
     "@aws-amplify/ui-react-ai": "ai-streaming",
     "@capacitor/android": "^6.1.2",
     "@capacitor/camera": "^6.0.2",
@@ -54,8 +54,9 @@
     "vite": "^5.4.1"
   },
   "overrides": {
-    "@aws-amplify/graphql-api-construct": "1.15.1-ai-streaming.4",
-    "@aws-amplify/data-construct": "1.11.0",
-    "@aws-amplify/data-schema": "1.10.0"
+    "@aws-amplify/graphql-api-construct": "ai-streaming",
+    "@aws-amplify/appsync-modelgen-plugin": "ai-streaming",
+    "@aws-amplify/data-schema": "ai-streaming",
+    "@aws-amplify/ui-react-ai": "ai-streaming"
   }
 }
