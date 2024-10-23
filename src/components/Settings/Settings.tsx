@@ -43,13 +43,13 @@ export default function Settings(props: {
         Exit Settings
       </Button>
       <Divider
-          marginBottom={tokens.space.medium}
-          paddingBottom={tokens.space.medium}
-        />
-        <Text fontSize={tokens.fontSizes.small}>
-          For support, email{" "}
-          <Link href="mailto:john@johncorser.com">john@johncorser.com</Link>
-        </Text>
+        marginBottom={tokens.space.medium}
+        paddingBottom={tokens.space.medium}
+      />
+      <Text fontSize={tokens.fontSizes.small}>
+        For support, email{" "}
+        <Link href="mailto:john@johncorser.com">john@johncorser.com</Link>
+      </Text>
     </Card>
   );
 }
