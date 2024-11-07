@@ -80,10 +80,10 @@ export default function Conversation(props: {
           messages={messages}
           handleSendMessage={sendMessage}
           messageRenderer={{
-            text(message: string) {
+            text: (input: {text: string}) => {
               return (
                 <ReactMarkdown rehypePlugins={[rehypeHighlight, remarkGfm]}>
-                  {message}
+                  {input.text}
                 </ReactMarkdown>
               );
             },
