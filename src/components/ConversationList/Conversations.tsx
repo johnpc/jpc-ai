@@ -16,7 +16,9 @@ export default function Conversations(props: {
   const [conversations, setConversations] = useState<ConversationArray>([]);
   useEffect(() => {
     const setup = async () => {
-      const conversations = await client.conversations.chat.list();
+      const conversations = await client.conversations.chat.list({
+        limit: 10000,
+      });
 
       setConversations(conversations.data);
     };
