@@ -12,6 +12,13 @@ import { useEffect, useState } from "react";
 
 const client = generateClient<Schema>({ authMode: "userPool" });
 const { useAIConversation } = createAIHooks(client);
+const updateConversation: (
+  conversation: Partial<Schema["chat"]["type"]> & { id: string }
+) => void = (
+  conversation
+) => {
+  client.conversations.chat.update(conversation);
+};
 
 export default function Conversation(props: {
   conversationId?: string;
@@ -48,7 +55,7 @@ export default function Conversation(props: {
 
   const [
     {
-      data: { messages },
+      data: { messages, conversation },
       hasError,
       isLoading,
     },
@@ -78,7 +85,23 @@ export default function Conversation(props: {
           variant="bubble"
           isLoading={isLoading}
           messages={messages}
-          handleSendMessage={sendMessage}
+          handleSendMessage={(message) => {
+            sendMessage(message);
+            // only run this on the first message...
+            if (!conversation?.name) {
+              const existingMessage = messages.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()).find(t => t)?.content.map((c) => c.text ?? "").join("")
+              client.generations
+                .chatNamer({
+                  content: existingMessage ?? message.content.map((c) => c.text ?? "").join(""),
+                })
+                .then((res) => {
+                  updateConversation({
+                    id: props.conversationId ?? conversation!.id,
+                    name: res.data?.name ?? "",
+                  });
+                });
+            }
+          }}
           messageRenderer={{
             text: (input: {text: string}) => {
               return (

@@ -8,14 +8,17 @@ export default function ConversationItem(props: {
   conversation: Schema["chat"]["type"];
 }) {
   const { tokens } = useTheme();
-  const [title, setTitle] = useState<string>();
+  const [title, setTitle] = useState<string>(props.conversation.name ?? '');
   useEffect(() => {
     const setup = async () => {
       const messages = await props.conversation.listMessages();
+      if (props.conversation.name) {
+        return;
+      }
       const firstMessage = messages.data
         .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
         .find((t) => t);
-      if (firstMessage) {
+      if (firstMessage?.content[0]?.text) {
         setTitle(firstMessage?.content[0]?.text);
       } else {
         setTitle("No messages yet");
