@@ -1,7 +1,7 @@
 import { generateClient } from "aws-amplify/data";
 import { createAIHooks, AIConversation } from "@aws-amplify/ui-react-ai";
 import type { Schema } from "../../../amplify/data/resource";
-import { Button, ScrollView, Text } from "@aws-amplify/ui-react";
+import { Button, ScrollView } from "@aws-amplify/ui-react";
 import { AuthUser } from "aws-amplify/auth";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
@@ -123,9 +123,10 @@ export default function Conversation(props: {
             },
           }}
         />
-        <Text as="span" style={{ visibility: "hidden" }}>
+        {/* This causes automatic scrolling to the bottom */}
+        {/* <Text as="span" style={{ visibility: "hidden" }}>
           {messages.length}
-        </Text>
+        </Text> */}
       </ScrollView>
     </>
   );

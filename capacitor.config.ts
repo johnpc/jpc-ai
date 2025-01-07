@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: "jpc.ai",
   webDir: "dist",
   server: {
-    androidScheme: "https",
+    hostname: 'ai.jpc.io',
+    androidScheme: 'https',
   },
   ios: {
     contentInset: "always",
