@@ -77,7 +77,7 @@ export default function Conversation(props: {
         minHeight="60vh"
         height={"75vh"}
         maxHeight={"75vh"}
-        autoScroll="smooth"
+        // autoScroll="smooth"
         overflow={"scroll"}
       >
         <AIConversation
